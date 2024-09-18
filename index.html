@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Deli: Media Sandwich Artisans</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Patrick+Hand&family=Courier+New&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e90ff;
+            --secondary-color: #6d84ed;
+            --background-color: #f4e3c3;
+            --text-color: #333;
+            --header-color: #002244;
+            --gradient-bg: linear-gradient(135deg, #f4e3c3, #f4e3c3);
+            --highlight-bg: #fef1d9;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        nav {
+            background-color: #e3d5b6;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+        nav h2 {
+            color: var(--secondary-color);
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        nav ul {
+            list-style: none;
+        }
+        nav ul li {
+            margin-bottom: 15px;
+        }
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+            background-color: #e3d5b6;
+            border-left: 4px solid var(--secondary-color);
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #d4c4a8;
+        }
+        header {
+            background: var(--gradient-bg);
+            color: var(--header-color);
+            text-align: center;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        header img {
+            width: 200px;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        h1, h2, h3 {
+            font-family: 'Patrick Hand', 'Courier New', monospace;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        h1 {
+            font-size: 3.5rem;
+            color: var(--header-color);
+        }
+        h2 {
+            font-size: 2rem;
+            background-color: rgba(211, 211, 211, 0.3);
+            padding: 10px 20px;
+            position: relative;
+        }
+        h2:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background-color: var(--secondary-color);
+        }
+        h3 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            border-bottom: 1px solid #d4c4a8;
+            padding-bottom: 5px;
+        }
+        p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+        .section-container {
+            background-color: var(--highlight-bg);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .film-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .film-card {
+            background-color: #f8eedc;
+            border-radius: 15px;
+            overflow: hidden;
+            padding: 1rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .film-card:hover {
+            transform: scale(1.03);
+        }
+        .iframe-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .creator {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        .logline {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+        .tag {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        .manifesto-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .manifesto-item {
+            padding: 1.5rem;
+            background-color: #f8eedc;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .tool-card {
+            background-color: #f8eedc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .tool-card h3 {
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .tool-card p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .tool-card a {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #e64500;
+            transform: scale(1.05);
+        }
+        .cta {
+            text-align: center;
+            margin-top: 4rem;
+        }
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 4rem;
+        }
+        .adventure-images {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .adventure-images img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .impact-statement {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--secondary-color);
+            line-height: 1.2;
+        }
+        .order-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 2rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 1rem;
+        }
+        .order-button:hover {
+            background-color: #e64500;
+            transform: scale(1.05);
+        }
+        .gen48-intro {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .gen48-logo {
+            width: 100px;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+        .gen48-text {
+            flex-grow: 1;
+        }
+        .blue-belt-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .blue-belt-subtitle {
+            font-size: 1rem;
+            color: var(--text-color);
+            font-style: italic;
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 30px;
+        }
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                z-index: 1000;
+            }
+            nav {
+                position: fixed;
+                top: 0;
+                left: -250px;
+                width: 250px;
+                height: 100%;
+                transition: left 0.3s ease;
+                z-index: 999;
+            }
+            nav.active {
+                left: 0;
+            }
+            main {
+                margin-left: 0;
+                padding: 20px;
+            }
+            .impact-statement {
+                font-size: 2rem;
+            }
+            .blue-belt-title {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .blue-belt-subtitle {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="hamburger">☰</button>
+    <nav>
+        <h2>Blue Deli</h2>
+        <ul>
+            <li><a href="#films">Blue Belt Films</a></li>
+            <li><a href="#manifesto">Manifesto</a></li>
+            <li><a href="#tools">Creative Tools</a></li>
+            <li><a href="#team-research">Team & Research</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <header>
+                <img src="BLUEDELI.png" alt="Blue Deli Logo">
+                <h3>Media Sandwich Artisans: Crafting AI Cold Cuts</h3>
+                            <div class="impact-statement">
+                thin slices of human ingenuity, savory glitches, free-range interestingness, and non-linear pickles 
+            </div>
+                <a href="https://discord.gg/gv4dX9Zj" class="order-button">Place Your Order Here</a>
+            </header>
+
+            <!-- Film Section -->
+            <section id="films" class="section-container">
+                <div class="blue-belt-title">
+                    <h2>Blue Belt Films</h2>
+                    <span class="blue-belt-subtitle">Not Black Belts... yet!</span>
+                </div>
+
+                <div class="gen48-intro">
+                    <img src="48.png" alt="Gen-48 Logo" class="gen48-logo">
+                    <div class="gen48-text">
+                        <h3>RunwayML Gen-48</h3>
+                        <p>Experience the next level of AI-generated filmmaking, but not black belt-level... yet, with films powered by Runway Gen-3 Alpha.</p>
+                    </div>
+                </div>
+
+                <!-- Film Cards -->
+                <div class="film-grid">
+                    <!-- Film Card 1 -->
+                    <div class="film-card">
+                        <div class="iframe-container">
+                            <iframe src="https://www.youtube.com/embed/dUK6lHpoMKY" allowfullscreen></iframe>
+                        </div>
+                        <div class="creator">Yago Arconada Alvarez</div>
+                        <p class="logline">A humble mushroom's journey revealing the hidden wonders of the forest.</p>
+                        <div class="tags">
+                            <span class="tag">Fantasy</span>
+                            <span class="tag">Nature</span>
+                            <span class="tag">Mushroom</span>
+                        </div>
+                    </div>
+
+                    <!-- Film Card 2 -->
+                    <div class="film-card">
+                        <div class="iframe-container">
+                            <iframe src="https://www.youtube.com/embed/t48to-rwwB8" allowfullscreen></iframe>
+                        </div>
+                        <div class="creator">Namit Kapoor</div>
+                        <p class="logline">A woman unravels while confronting a shattered identity.</p>
+                        <div class="tags">
+                            <span class="tag">Psychological</span>
+                            <span class="tag">Drama</span>
+                            <span class="tag">Identity</span>
+                        </div>
+                    </div>
+
+                    <!-- Film Card 3 -->
+                    <div class="film-card">
+                        <div class="iframe-container">
+                            <iframe src="https://www.youtube.com/embed/39z8xpWx-sU" allowfullscreen></iframe>
+                        </div>
+                        <div class="creator">Hannsue & Ali Huang</div>
+                        <p class="logline">A poetic reflection on the fleeting nature of memory and human connection.</p>
+                        <div class="tags">
+                            <span class="tag">Abstract</span>
+                            <span class="tag">Memory</span>
+                            <span class="tag">Philosophical</span>
+                        </div>
+                    </div>
+
+                    <!-- Film Card 4 -->
+                    <div class="film-card">
+                        <div class="iframe-container">
+                            <iframe src="https://www.youtube.com/embed/ouWVwn-CSkc" allowfullscreen></iframe>
+                        </div>
+                        <div class="creator">Yemesrach Tadesse</div>
+                        <p class="logline">A young boy turns obstacles into opportunities on his path to becoming a soccer champion.</p>
+                        <div class="tags">
+                            <span class="tag">Animated</span>
+                            <span class="tag">Sports</span>
+                            <span class="tag">Inspiration</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Manifesto Section -->
+            <section id="manifesto" class="section-container">
+                <h2>Our Manifesto</h2>
+                <div class="manifesto-section">
+                    <!-- Manifesto Item 1 -->
+                    <div class="manifesto-item">
+                        <h3>Emergent Storytelling</h3>
+                        <p>We shape, guide, and tweak narratives, always leaving room for surprise.</p>
+                    </div>
+                    <!-- Manifesto Item 2 -->
+                    <div class="manifesto-item">
+                        <h3>Celebrate the Process</h3>
+                        <p>Every step, every decision is part of the performance of creation.</p>
+                    </div>
+                    <!-- Manifesto Item 3 -->
+                    <div class="manifesto-item">
+                        <h3>Latent Story Sculpting</h3>
+                        <p>We refine raw AI output to reveal the core narrative hidden within.</p>
+                    </div>
+                    <!-- Manifesto Item 4 -->
+                    <div class="manifesto-item">
+                        <h3>Iterative Creativity</h3>
+                        <p>We work in cycles of creation, review, and adaptation.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tools Section -->
+            <section id="tools" class="section-container">
+                <h2>Your Creative Tools</h2>
+                <div class="tool-grid">
+                    <!-- Tool Card 1 -->
+                    <div class="tool-card">
+                        <h3>Matrix Editor</h3>
+                        <p>Sculpt narratives from raw prompts in a zoomable, grid-based format.</p>
+                        <a href="https://chatgpt.com/g/g-YT1gfxF0Z-matrix-editor">Try Matrix Editor</a>
+                    </div>
+                    <!-- Tool Card 2 -->
+                    <div class="tool-card">
+                        <h3>World Prompt</h3>
+                        <p>Let your story emerge, one world-building prompt at a time.</p>
+                        <a href="https://chatgpt.com/g/g-M4Cj2QTh6-world-prompt">Try World Prompt</a>
+                    </div>
+                    <!-- Tool Card 3 -->
+                    <div class="tool-card">
+                        <h3>Cybernetic Cineosis</h3>
+                        <p>Bridge the gap between cinematic visuals and AI-driven storytelling.</p>
+                        <a href="https://chatgpt.com/g/g-0SbVHVdE9-cybernetic-cineosis">Try Cybernetic Cineosis</a>
+                    </div>
+                    <!-- Tool Card 4 -->
+                    <div class="tool-card">
+                        <h3>CinePrompt</h3>
+                        <p>Create cinematic prompts, shaping visuals and soundscapes layer by layer.</p>
+                        <a href="https://chatgpt.com/g/g-9iX6Q3uMt-cineprompt">Try CinePrompt</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team & Research Section -->
+            <section id="team-research" class="section-container">
+                <h2>Our Team and Research</h2>
+                <div class="adventure-images">
+                    <img src="dolphin.png" alt="Adventure 1">
+                    <img src="elephant.png" alt="Adventure 2">
+                    <img src="hawk.png" alt="Adventure 3">
+                    <img src="tortoise.png" alt="Adventure 4">
+                    <img src="owl.png" alt="Adventure 5">
+                </div>
+                <p>At Blue Deli, we're a Frankenstein club sandwich of hackers, award-winning artists, human-computer interaction specialists, social scientists, change managers, and snack pros. We blend these disciplines to push the boundaries of AI-driven creativity.</p>
+                
+                <h3>Choose Your Own Adventure Study</h3>
+                <p>We're exploring and mapping new flows of creativity, data, and property.</p>
+
+                <div class="cta">
+                    <a href="#explore-research" class="cta-button">Explore Our Research</a>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Blue Deli. Media Sandwich Artisans. Layer your creativity with us!</p>
+        </footer>
+    </main>
+
+    <script>
+        document.querySelector(".hamburger").addEventListener("click", function () {
+            document.querySelector("nav").classList.toggle("active");
+        });
+    </script>
+</body>
+</html>
